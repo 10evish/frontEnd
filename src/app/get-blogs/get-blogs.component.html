@@ -1,0 +1,97 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark text-white my-3">
+    <div class="container-fluid">
+      <h2>Tutorial</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      </div>
+    </div>
+  </nav>
+  <a routerLink="/add"><h3>Add Data</h3></a>
+
+  <div class="row d-flex justify-content-center my-2" *ngIf="currentBlog">
+    <div class="col-12 text-center fs-4">
+      <b>Title :</b> {{ currentBlog.title }}
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+
+      <b>Description:</b> {{ currentBlog.body }}
+
+    </div>
+    <div>
+    </div>
+  </div>
+  
+  <div class="row d-flex justify-content-center ">
+    <div class="col-3  border border-1 border-dark m-1 shadow rounded" *ngFor="let blog of blogs; let i = index"
+      [class.active]="i == currentIndex" (click)="setActiveBlogs(blog, i)">
+      <div class="row my-2">
+
+        <!-- <div *ngIf="blog.title != '' || blog.title ! " ></div> -->
+        <div class="col-8 fs-5 text-center">
+          <!-- <div class="fs-5"> -->
+          {{ blog.title }}
+          <!-- </div> -->
+        </div>
+        <div class="col-2">
+          <button class="btn  " (click)="edit(blog)">
+            <i class="fas fa fa-edit"></i>
+
+          </button>
+
+        </div>
+        <div class="col-2 mr-1 ">
+          <button class="btn redIcon " (click)="remove(blog._id)"> 
+            <i class="fas fa fa-trash"></i>
+
+          </button>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- <div class="list row">
+    <div class="col-md-6">
+      <h4>Tutorials List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let blog of blogs; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveBlogs(blog, i)"
+        >
+          {{ blog.title }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentBlog">
+        <h4>Tutorial</h4>
+        <div>
+          <label><strong>Title:</strong></label> {{ currentBlog.title }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label>
+          {{ currentBlog.body }}
+        </div>
+        <div>
+          <label><strong>Status:</strong></label>
+          {{ currentBlog.published ? "Published" : "Pending" }}
+        </div>
+        <a class="badge badge-warning" routerLink="/tutorials/{{ currentTutorial.id }}">
+          Edit
+        </a>
+      </div>
+    </div>
+  </div> -->
